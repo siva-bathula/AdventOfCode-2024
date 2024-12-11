@@ -23,14 +23,14 @@ function createDiskMap(numbers) {
         const length = numbers[i];
 
         if (i % 2 === 0) {
-        for (let j = 0; j < length; j++) {
-            disk.push(fileId);
-        }
-        fileId++;
+            for (let j = 0; j < length; j++) {
+                disk.push(fileId);
+            }
+            fileId++;
         } else {
-        for (let j = 0; j < length; j++) {
-            disk.push(".");
-        }
+            for (let j = 0; j < length; j++) {
+                disk.push(".");
+            }
         }
     }
 
@@ -44,7 +44,7 @@ function compactDisk(disk) {
 
         let lastFilePos = disk.length - 1;
         while (lastFilePos >= 0 && disk[lastFilePos] === ".") {
-        lastFilePos--;
+            lastFilePos--;
         }
 
         if (lastFilePos <= firstGap) break;
@@ -70,7 +70,7 @@ function compactDisk2(disk) {
     for (const file of files) {
         const newPos = findFreeSpace(disk, file.start, file.length);
         if (newPos !== -1) {
-        moveFile(disk, file, newPos);
+            moveFile(disk, file, newPos);
         }
     }
 
@@ -85,13 +85,13 @@ function findFiles(disk) {
         if (id === ".") continue;
 
         if (!files.has(id)) {
-        files.set(id, {
-            id,
-            start: i,
-            length: 1,
-        });
+            files.set(id, {
+                id,
+                start: i,
+                length: 1,
+            });
         } else {
-        files.get(id).length++;
+            files.get(id).length++;
         }
     }
 
@@ -104,15 +104,15 @@ function findFreeSpace(disk, start, length) {
 
     for (let i = 0; i < start; i++) {
         if (disk[i] === ".") {
-        if (currentStart === -1) currentStart = i;
-        currentLength++;
+            if (currentStart === -1) currentStart = i;
+            currentLength++;
 
-        if (currentLength === length) {
-            return currentStart;
-        }
+            if (currentLength === length) {
+                return currentStart;
+            }
         } else {
-        currentLength = 0;
-        currentStart = -1;
+            currentLength = 0;
+            currentStart = -1;
         }
     }
 
