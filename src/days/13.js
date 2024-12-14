@@ -12,7 +12,6 @@ module.exports.part1 = async function (dayNum) {
 function fewestTokens(grid, delta = 0) {
     var tokens = 0;
     let a1=0,a2=0,b1=0,b2=0,c1=0,c2=0;
-    var counter = 0;
     for(let i=0; i<grid.length; i++) {
         if (grid[i].startsWith('Button A:')) {
             var aTokens = grid[i].split('+');
@@ -26,7 +25,6 @@ function fewestTokens(grid, delta = 0) {
             var prizeTokens = grid[i].split('=');
             c1 = delta + (+(prizeTokens[1].split(',')[0]));
             c2 = delta + (+prizeTokens[2]);
-            console.log(a1,a2,b1,b2,c1,c2);
             var a1b2 = a1*b2, a2b1 = a2*b1;
             if (a1b2 !== a2b1) {
                 var A = ((c1*b2) - (c2*b1)) / ((a1b2) - (a2b1));
